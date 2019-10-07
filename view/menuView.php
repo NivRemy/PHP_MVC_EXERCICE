@@ -11,6 +11,8 @@ ob_start();
 <a href="index.php?page=2">Lien vers la page 2</a>
 <br>
 <a href="index.php?login=1">Lien vers le formulaire</a>
+<br>
+<a href="index.php?signin=1">Créer un compte</a>
 <?php
 $content = ob_get_clean();
 
