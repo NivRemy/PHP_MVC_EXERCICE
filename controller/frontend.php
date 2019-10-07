@@ -30,7 +30,7 @@ function checkLogin($email,$password){
 	var_dump($user);
 	if(password_verify($password, $user['password'])){
 		$_SESSION['mail']= $email;
-		$_SESSION['password']= $password;
+		/*$_SESSION['password']= $password;*/
 		require 'view/loginResultView.php';
 	} else {
 		echo 'Mauvais login';

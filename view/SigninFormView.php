@@ -18,6 +18,8 @@ ob_start();
 	<button type="submit">S'inscrire</button>
 </form>
 
+
+
 <?php
 $content = ob_get_clean();
 

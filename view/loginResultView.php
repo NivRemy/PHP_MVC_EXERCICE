@@ -7,7 +7,7 @@ ob_start();
 <h1>vous êtes loggé!</h1>
 <p>Bonjour, vous êtes connecté en tant que: <?= $email ;?> avec le mdp <?= $password;?></p>
 <a href="index.php">Lien vers la page d'accueil</a>
-
+<a href="index.php?logout=1"><button>Déconnexion</button></a>
 <?php
 $content = ob_get_clean();
 

@@ -1,20 +1,42 @@
 <?php
 session_start();
+session_destroy();
 require 'controller/frontend.php';
 
+if(isset($_GET['logout'])){
+	session_destroy();
+	header('Location: index.php');
+}
 
-if(isset($_GET['page'])){
-	displayPage($_GET['page']);
-}else if(isset($_GET['signin'])){
+//Test si la personne est connectée
+if (isset($_SESSION['mail'])){
+	//Page spécifique utilisateur
+	if(isset($_GET['page'])){
+		displayPage($_GET['page']);
+	}
+	//Page par défault utilisateur
+	else{
+		displayUserPage();
+	}
+
+}
+//Affichage du formulaire d'inscription
+else if(isset($_GET['signin'])){
 	displaySigninForm();
-}else if(isset($_POST['signinEmail']) && isset($_POST['signinFName']) && isset($_POST['signinEmail']) && isset($_POST['signinPassword'])){
+}
+//INscription au site
+else if(isset($_POST['signinEmail']) && isset($_POST['signinFName']) && isset($_POST['signinEmail']) && isset($_POST['signinPassword'])){
 	signin($_POST['signinEmail'],$_POST['signinPassword'],$_POST['signinFName'],$_POST['signinLName'],$_POST['rank']);
-} else if (isset($_SESSION['mail'])){
-	displayUserPage();
-}else if(isset($_POST['email']) && isset($_POST['password'])){
+}
+//Tentative de connexion
+else if(isset($_POST['email']) && isset($_POST['password'])){
 	checkLogin($_POST['email'],$_POST['password']);
-}else if(isset($_GET['login'])){
+}
+// AFfichage du formulaire de login
+else if(isset($_GET['login'])){
 	displayLogin();
-} else {
+}
+//Page par défault personnes non connectées
+else {
 	displayMenu();
 }
