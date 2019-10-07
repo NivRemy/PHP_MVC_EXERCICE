@@ -7,20 +7,8 @@ if(isset($_GET['logout'])){
 	header('Location: index.php');
 }
 
-//Test si la personne est connectée
-if (isset($_SESSION['mail'])){
-	//Page spécifique utilisateur
-	if(isset($_GET['page'])){
-		displayPage($_GET['page']);
-	}
-	//Page par défault utilisateur
-	else{
-		displayUserPage();
-	}
-
-}
 //Affichage du formulaire d'inscription
-else if(isset($_GET['signin'])){
+if(isset($_GET['signin'])){
 	displaySigninForm();
 }
 //INscription au site
@@ -34,6 +22,18 @@ else if(isset($_POST['email']) && isset($_POST['password'])){
 // AFfichage du formulaire de login
 else if(isset($_GET['login'])){
 	displayLogin();
+}
+//Test si la personne est connectée
+else if (isset($_SESSION['mail'])){
+	//Page spécifique utilisateur
+	if(isset($_GET['page'])){
+		displayPage($_GET['page']);
+	}
+	//Page par défault utilisateur
+	else{
+		displayUserPage();
+	}
+
 }
 //Page par défault personnes non connectées
 else {
