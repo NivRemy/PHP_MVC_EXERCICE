@@ -1,6 +1,5 @@
 <?php
 session_start();
-session_destroy();
 require 'controller/frontend.php';
 
 if(isset($_GET['logout'])){
