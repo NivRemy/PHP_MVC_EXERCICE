@@ -31,7 +31,7 @@ else if (isset($_SESSION['mail'])){
 	}
 	//Page par défault utilisateur
 	else{
-		displayUserPage();
+		displayMenu();
 	}
 
 }

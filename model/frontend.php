@@ -37,3 +37,10 @@ function addUser($email,$password,$fName,$lName,$rank){
 	$request->bindValue(':rank',htmlentities($rank));
 	$request->execute();
 }
+function getPlayers(){
+
+	$bdd = connect();
+	$request = $bdd->prepare('SELECT * FROM players');
+	$request->execute();
+	return $request ->fetchAll(PDO::FETCH_ASSOC);
+}

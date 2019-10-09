@@ -14,6 +14,10 @@ function displayPage($pageNumber){
 		case 2:
 			require 'view/page2View.php';
 			break;
+		case 3:
+			$players=getPlayers();
+			require 'view/page3View.php';
+			break;
 		
 		default:
 			displayMenu();
@@ -27,10 +31,9 @@ function displayLogin(){
 
 function checkLogin($email,$password){
 	$user = getUser($email);
-	var_dump($user);
 	if(password_verify($password, $user['password'])){
 		$_SESSION['mail']= $email;
-		/*$_SESSION['password']= $password;*/
+		$_SESSION['password']= $password;
 		require 'view/loginResultView.php';
 	} else {
 		echo 'Mauvais login';
@@ -41,7 +44,6 @@ function checkLogin($email,$password){
 }
 
 function displayUserPage(){
-	var_dump($_SESSION);
 	$email = $_SESSION['mail'];
 	$password = $_SESSION['password'];
 	require 'view/loginResultView.php';
